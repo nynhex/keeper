@@ -36,5 +36,12 @@ RSpec.describe Product do
         expect(product.price_in_dollars).to eq(9999.99)
       end
     end
+
+    describe 'when price_cents is not a number' do
+      it 'is not valid' do
+        product = Product.new(name: 'Lamp', price_cents: 'hello')
+        expect(product).not_to be_valid
+      end
+    end
   end
 end
